@@ -38,7 +38,7 @@ const StyledListItem = styled.li`
 const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 134px;
+  width: 135px;
 `;
 
 type TodoList = {
