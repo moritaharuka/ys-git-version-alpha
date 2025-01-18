@@ -29,11 +29,54 @@ const StyledButtonWrapper = styled.div`
 `;
 
 type Props = {
+<<<<<<< HEAD
+  getData: () => Promise<void>
+=======
   setTodoList: React.Dispatch<React.SetStateAction<TodoList[]>>,
+>>>>>>> develop
   todoList: TodoList[]
 }
 
 export const List: React.FC<Props> = ({
+<<<<<<< HEAD
+  getData,
+  todoList
+}) => {
+  const completedTodoItem = async(item: TodoList) => {
+    const res = await fetch(`http://localhost:3000/tasks/${item.id}`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ...item,
+        isCompleted: !item.isCompleted
+      })
+    })
+
+    if(!res.ok) {
+      throw new Error();
+    }
+
+    await getData();
+  }
+
+  const deleteTodoItem = async(id: string) => {
+    const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+
+    if(!res.ok) {
+      throw new Error();
+    }
+
+    await getData();
+=======
   setTodoList,
   todoList
 }) => {
@@ -53,6 +96,7 @@ export const List: React.FC<Props> = ({
   const deleteTodoItem = (id: string) => {
     const updateList = todoList.filter((data) => data.id !== id);
     setTodoList(updateList);
+>>>>>>> develop
   }
 
   return (
@@ -88,7 +132,11 @@ export const List: React.FC<Props> = ({
               </Button>
               <Button
                 type="button"
+<<<<<<< HEAD
+                onClick={() => completedTodoItem(item)}
+=======
                 onClick={() => completedTodoItem(item.id)}
+>>>>>>> develop
                 variant="contained"
                 size="small"
                 sx={{
