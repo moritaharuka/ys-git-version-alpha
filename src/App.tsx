@@ -83,6 +83,31 @@ function App() {
     setTodoList(updateList);
   }
 
+  const getTodoList = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/tasks", {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+
+      if(!res.ok) {
+        throw new Error();
+      }
+
+      const data = await res.json();
+      setTodoList(data);
+    } catch (error) {
+      alert('「npm run json-server」でjson-serverを起動してください。')
+    }
+  }
+
+  React.useEffect(() => {
+    getTodoList();
+  }, []);
+
   return (
     <StyledContainer>
       <Typography variant="h1" sx={{fontSize: "32px"}}>今日やること</Typography>
