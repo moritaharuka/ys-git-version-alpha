@@ -21,7 +21,7 @@ function App() {
 
   return (
     <StyledContainer>
-      <Typography variant="h1" sx={{fontSize: "32px"}}>今日やること</Typography>
+      <Typography variant="h1" sx={{fontSize: "32px"}}>今日やること1</Typography>
       <InputForm setTodoList={setTodoList} todoList={todoList} />
       <List setTodoList={setTodoList} todoList={todoList} />
     </StyledContainer>
